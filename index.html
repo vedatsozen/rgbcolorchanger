@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB COLOR CHANGER APP</title>
+    <style>
+        body {
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: bisque;
+    margin-top:10px;
+    text-align: center;
+}
+
+#container {
+    margin: auto;
+    height:fit-content;
+    width:fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:5px;
+    visibility: hidden;
+    position: absolute;
+    top:5px;
+    left: 5px;
+ 
+}
+
+#container > div {
+    height: 60px;
+    color: black;
+}
+
+#container2 {
+    margin: auto;
+    height:fit-content;
+    width:fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:5px;
+    visibility: hidden;
+    position: absolute;
+    top:5px;
+    left: 5px;
+ 
+}
+
+#container2 > div {
+    height: 60px;
+    color: black;
+}
+
+#container3 {
+    margin: auto;
+    height:fit-content;
+    width:fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:5px;
+    visibility: hidden;
+    position: absolute;
+    top:5px;
+    left: 5px;
+ 
+}
+
+#container3 > div {
+    height: 60px;
+    color: black;
+}
+
+input {
+    width:80px;
+    height: 3px;
+    cursor: pointer;
+}
+
+p {
+    display: block;
+    background-color: black;
+    color:white;
+    font-size:12px;
+    width: fit-content;
+    padding:5px;
+    border-radius: 3px;
+    margin: auto;
+    margin-top:10px;
+
+}
+
+
+h1#slogan {
+
+
+   
+ margin: auto;
+ margin-top:100px;
+ display: block;
+ padding:8px;
+ font-size:60px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width:fit-content;
+ 
+
+}
+
+select {
+    height: 30px;
+    width:150px;
+    padding:5px;
+    margin:auto;
+    text-align: center;
+    cursor: pointer;
+    margin-top:100px;
+    font-size: 16px;
+}
+
+#container.makemevisible, #container2.makemevisible, #container3.makemevisible {
+    visibility:visible;
+}
+
+button {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+
+<select id="selectid">
+    <option>Background</option>
+    <option>h1</option>
+    <option>h1background</option>
+</select>
+
+<button onclick="apply()">Apply</button>
+<button onclick="changeh1()">Change H1 Text</button>
+<button onclick="reset()">Reset All</button>
+<p>Instructions -> Choose element of page from list and click apply button. And adjust the color of element. You can copy rgb color of element to clipboard if you want. </p>
+
+<div id="container">
+<div id="rid">
+<input id="r" type="range" min="0" max="250" oninput="rgbfunction()"> 
+<p id="rpid"></p>
+</div>
+
+<div id="gid">
+    <input id="g" type="range" min="0" max="250" oninput="rgbfunction()"> 
+    <p id="gpid"></p>
+</div>
+
+<div id="bid">
+<input id="b" type="range" min="0" max="250" oninput="rgbfunction()"> 
+<p id="bpid"></p>
+</div>
+<button class="copy" onclick="copyme()">Copy Color Code</button>
+</div>
+
+<div id="container2">
+
+    <div id="rid2">
+    <input id="r2" type="range" min="0" max="250" oninput="h1rgbfunction()"> 
+    <p id="rpid2"></p>
+    </div>
+    
+    <div id="gid2">
+        <input id="g2" type="range" min="0" max="250" oninput="h1rgbfunction()"> 
+        <p id="gpid2"></p>
+    </div>
+    
+    <div id="bid2">
+    <input id="b2" type="range" min="0" max="250" oninput="h1rgbfunction()"> 
+    <p id="bpid2"></p>
+    </div>
+    <button class="copy" onclick="copyme2()">Copy Color Code</button>
+</div>
+
+<div id="container3">
+
+    <div id="rid3">
+    <input id="r3" type="range" min="0" max="250" oninput="h1bgcolorrgbfunction()"> 
+    <p id="rpid3"></p>
+    </div>
+    
+    <div id="gid3">
+        <input id="g3" type="range" min="0" max="250" oninput="h1bgcolorrgbfunction()"> 
+        <p id="gpid3"></p>
+    </div>
+    
+    <div id="bid3">
+    <input id="b3" type="range" min="0" max="250" oninput="h1bgcolorrgbfunction()"> 
+    <p id="bpid3"></p>
+    </div>
+   
+    <button class="copy" onclick="copyme3()">Copy Color Code</button>
+    
+</div>
+
+<h1 id="slogan">Rgb Color Changer App</h1>
+
+</body>
+
+<script>
+
+function rgbfunction() {
+
+let r = document.getElementById("r").value;
+let g = document.getElementById("g").value;
+let b = document.getElementById("b").value;
+
+document.getElementById("rpid").innerHTML = r;
+document.getElementById("gpid").innerHTML = g;
+document.getElementById("bpid").innerHTML = b;
+
+let rgbColor = "rgb("+r+","+g+","+b+")" ;
+
+document.body.style.backgroundColor = rgbColor ;
+
+}
+
+function h1rgbfunction() {
+
+let r2 = document.getElementById("r2").value;
+let g2 = document.getElementById("g2").value;
+let b2 = document.getElementById("b2").value;
+
+document.getElementById("rpid2").innerHTML = r2;
+document.getElementById("gpid2").innerHTML = g2;
+document.getElementById("bpid2").innerHTML = b2;
+
+const rgbColor2 = "rgb("+r2+","+g2+","+b2+")" ;
+
+document.getElementById("slogan").style.color = rgbColor2 ;
+
+}
+
+function h1bgcolorrgbfunction() {
+
+let r3 = document.getElementById("r3").value;
+let g3 = document.getElementById("g3").value;
+let b3 = document.getElementById("b3").value;
+
+document.getElementById("rpid3").innerHTML = r3;
+document.getElementById("gpid3").innerHTML = g3;
+document.getElementById("bpid3").innerHTML = b3;
+
+const rgbColor3 = "rgb("+r3+","+g3+","+b3+")" ;
+
+document.getElementById("slogan").style.backgroundColor = rgbColor3 ;
+
+
+
+
+
+}
+
+
+function apply() {
+
+const element = document.getElementById("selectid").value;
+
+if ( element == "Background" ) {
+
+    document.getElementById("container").classList.add("makemevisible");
+    document.getElementById("container2").classList.remove("makemevisible");
+    document.getElementById("container3").classList.remove("makemevisible");
+}
+
+else if ( element == "h1") {
+
+    document.getElementById("container2").classList.add("makemevisible");
+    document.getElementById("container").classList.remove("makemevisible");
+    document.getElementById("container3").classList.remove("makemevisible");
+
+}
+
+else if ( element == "h1background") {
+
+document.getElementById("container3").classList.add("makemevisible");
+document.getElementById("container").classList.remove("makemevisible");
+document.getElementById("container2").classList.remove("makemevisible");
+
+}
+
+}
+
+function copyme() {
+
+let r = document.getElementById("r").value;
+let g = document.getElementById("g").value;
+let b = document.getElementById("b").value;
+
+document.getElementById("rpid").innerHTML = r;
+document.getElementById("gpid").innerHTML = g;
+document.getElementById("bpid").innerHTML = b;
+
+let rgbColor = "rgb("+r+","+g+","+b+")" ;
+
+navigator.clipboard.writeText(rgbColor);
+
+alert("Copied the text: " + rgbColor);
+}
+
+function copyme2() {
+
+let r2 = document.getElementById("r2").value;
+let g2 = document.getElementById("g2").value;
+let b2 = document.getElementById("b2").value;
+
+document.getElementById("rpid2").innerHTML = r2;
+document.getElementById("gpid2").innerHTML = g2;
+document.getElementById("bpid2").innerHTML = b2;
+
+const rgbColor2 = "rgb("+r2+","+g2+","+b2+")" ;
+
+navigator.clipboard.writeText(rgbColor2);
+
+alert("Copied the text: " + rgbColor2);
+}
+
+function copyme3() {
+
+let r3 = document.getElementById("r3").value;
+let g3 = document.getElementById("g3").value;
+let b3 = document.getElementById("b3").value;
+
+document.getElementById("rpid3").innerHTML = r3;
+document.getElementById("gpid3").innerHTML = g3;
+document.getElementById("bpid3").innerHTML = b3;
+
+const rgbColor3 = "rgb("+r3+","+g3+","+b3+")" ;
+
+navigator.clipboard.writeText(rgbColor3);
+
+alert("Copied. Rgb Code of Color: " + rgbColor3);
+
+}
+
+function reset() {
+    window.location.reload();
+}
+
+
+function changeh1() {
+
+    const changedh1 = prompt("Enter New H1 Text");
+
+    if ( changedh1 == "") {
+        alert("write something");
+        changeh1();
+    }
+
+    else {
+    document.getElementById("slogan").innerHTML = changedh1;
+
+    }
+
+}
+</script>
+</html>
